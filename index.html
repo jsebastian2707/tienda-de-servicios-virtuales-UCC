@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <div class="card" id="registration-card">
+      <div class="card-header">
+        <h1 class="card-title">Registro de Usuario</h1>
+        <p class="card-description">Crea tu cuenta para acceder a la plataforma y comenzar a usar nuestros servicios.</p>
+      </div>
+      
+      <div class="card-content">
+        <div class="tabs">
+          <button class="tab-button active" data-type="client">Cliente</button>
+          <button class="tab-button" data-type="professional">Profesional</button>
+        </div>
+        
+        <form id="registration-form" class="form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Nombre</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Juan" required>
+              <span class="error-message" id="firstName-error"></span>
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Apellido</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Pérez" required>
+              <span class="error-message" id="lastName-error"></span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+            <span class="error-message" id="email-error"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone" placeholder="+34 612 345 678" required>
+            <span class="error-message" id="phone-error"></span>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input type="password" id="password" name="password" required>
+              <span class="error-message" id="password-error"></span>
+            </div>
+            
+            <div class="form-group">
+              <label for="confirmPassword">Confirmar contraseña</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" required>
+              <span class="error-message" id="confirmPassword-error"></span>
+            </div>
+          </div>
+          
+          <input type="hidden" id="userType" name="userType" value="client">
+          
+          <div id="professional-fields" class="professional-section hidden">
+            <h3>Información profesional</h3>
+            <div class="form-group">
+              <label for="specialty">Especialidad</label>
+              <input type="text" id="specialty" name="specialty" placeholder="Ej: Fontanería, Electricidad, etc.">
+              <span class="error-message" id="specialty-error"></span>
+            </div>
+            
+            <div class="form-group">
+              <label for="experience">Años de experiencia</label>
+              <input type="number" id="experience" name="experience" min="0">
+              <span class="error-message" id="experience-error"></span>
+            </div>
+            
+            <div class="form-group">
+              <label for="description">Descripción de servicios</label>
+              <textarea id="description" name="description" placeholder="Describe los servicios que ofreces y tu experiencia profesional..."></textarea>
+              <span class="error-message" id="description-error"></span>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-button">Registrarse</button>
+        </form>
+      </div>
+      
+      <div class="card-footer">
+        <p>¿Ya tienes una cuenta? <a href="#" class="login-link">Iniciar sesión</a></p>
+      </div>
+    </div>
+    
+    <div class="card hidden" id="success-card">
+      <div class="card-content success-content">
+        <div class="success-icon">✓</div>
+        <h2>¡Registro exitoso!</h2>
+        <p>Tu cuenta ha sido creada correctamente. Ahora puedes acceder a todas las funcionalidades de la plataforma.</p>
+        <button class="submit-button" id="back-button">Volver al inicio</button>
+      </div>
+    </div>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+
