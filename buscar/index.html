@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Servicios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Buscar Servicios</h1>
+        <input type="text" id="searchInput" placeholder="Escribe una palabra clave...">
+        <button onclick="buscarServicio()">Buscar</button>
+        <ul id="resultados"></ul>
+    </div>
+
+    <script>
+        function buscarServicio() {
+            const query = document.getElementById("searchInput").value;
+            if (!query) {
+                alert("Ingrese una palabra clave");
+                return;
+            }
+
+            fetch(`http://localhost:3000/buscar?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultados = document.getElementById("resultados");
+                    resultados.innerHTML = "";
+
+                    if (data.mensaje) {
+                        resultados.innerHTML = `<li>${data.mensaje}</li>`;
+                    } else {
+                        data.forEach(servicio => {
+                            const li = document.createElement("li");
+                            li.textContent = servicio.nombre + " - " + servicio.descripcion;
+                            resultados.appendChild(li);
+                        });
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
